@@ -2,7 +2,7 @@
 
 在浏览器里记录守望先锋胜负，比较数学模型对下一局胜率的估计。
 
-**访问地址（部署成功后可用）：https://luyu14039.github.io/ow-next-match/**
+**[直接打开使用](https://luyu14039.github.io/ow-next-match/)**
 
 无需登录应用。首页展示近五局、三个模型的下一局胜率，以及快速胜负记录；分析与历史在同一页。支持截图批量识别、手工胜负串、JSON / CSV 导入和备份恢复。
 
@@ -55,6 +55,7 @@ npm test
 - [研究依据](docs/RESEARCH.md)
 - [架构](docs/ARCHITECTURE.md)
 - [GitHub Pages 部署与验收](docs/DEPLOYMENT.md)
+- [首次线上验收记录](docs/ONLINE_QA.md)
 - [依赖及素材来源](THIRD_PARTY.md)
 
 GitHub 公开可见性不等于自动授予代码再许可权；项目自身许可证尚待维护者确定，第三方依赖许可见上述说明。

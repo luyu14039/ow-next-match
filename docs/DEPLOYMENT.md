@@ -12,6 +12,6 @@
 
 玩家记录保存在各自浏览器中，本地与 Pages 地址不共享记录。迁移通过 JSON 备份，换自定义域名时再次迁移。
 
-当前公开版本准备不等于已通过线上验收；以 Actions 结果和实际网站测试为准。源码和测试资料使用合成内容，个人资料不发布。
+2026-10-07 已完成首次部署，Actions 的测试、构建、资源检查与发布均成功。正式 HTTPS 地址已验证模型计算、合成截图识别、导入保存、快速记录和刷新恢复，详细结果及验证范围见 [ONLINE_QA.md](ONLINE_QA.md)。源码和测试资料使用合成内容，个人资料不发布。
 
 依据：[Vite 部署说明](https://vite.dev/guide/static-deploy.html)、[GitHub Pages 工作流](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)。
