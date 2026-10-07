@@ -1,0 +1,22 @@
+# Personal source images stay on this computer.
+/History/
+/local-analysis/
+
+# Future frontend outputs and local configuration.
+node_modules/
+dist/
+coverage/
+playwright-report/
+test-results/
+.env
+.env.*
+!.env.example
+*.tsbuildinfo
+__pycache__/
+*.pyc
+/public/ocr/*
+!/public/ocr/README.md
+/artifacts/
+/output/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,58 @@
+{
+  "sourceKind": "synthetic",
+  "note": "Drawn fixture, not player history. Screens newest first; upload older screenshot first.",
+  "screenshots": [
+    {
+      "file": "synthetic-01.png",
+      "rowsNewestToOldest": [
+        {
+          "map": "萨摩亚",
+          "outcome": "win",
+          "scoreDisplay": "2-1",
+          "relativeTimeText": "50分钟之前",
+          "durationText": "15:36"
+        },
+        {
+          "map": "釜山",
+          "outcome": "loss",
+          "scoreDisplay": "0-2",
+          "relativeTimeText": "1小时之前",
+          "durationText": "10:51"
+        },
+        {
+          "map": "皇家赛道",
+          "outcome": "win",
+          "scoreDisplay": "3-0",
+          "relativeTimeText": "2小时之前",
+          "durationText": "8:56"
+        }
+      ]
+    },
+    {
+      "file": "synthetic-02.png",
+      "rowsNewestToOldest": [
+        {
+          "map": "伊利奥斯",
+          "outcome": "loss",
+          "scoreDisplay": "0-2",
+          "relativeTimeText": "10分钟之前",
+          "durationText": "12:12"
+        },
+        {
+          "map": "斗兽场",
+          "outcome": "win",
+          "scoreDisplay": "1-0",
+          "relativeTimeText": "20分钟之前",
+          "durationText": "9:42"
+        },
+        {
+          "map": "南极半岛",
+          "outcome": "loss",
+          "scoreDisplay": "0-2",
+          "relativeTimeText": "30分钟之前",
+          "durationText": "8:44"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,550 @@
+{
+  "sourceKind": "synthetic",
+  "seed": 20261007,
+  "records": [
+    {
+      "id": "synthetic-fixture-record-1",
+      "outcome": "win",
+      "role": null,
+      "mode": "competitive",
+      "entryKind": "synthetic",
+      "fieldOrigin": "synthetic"
+    },
+    {
+      "id": "synthetic-fixture-record-2",
+      "outcome": "loss",
+      "role": null,
+      "mode": "quick-play",
+      "entryKind": "synthetic",
+      "fieldOrigin": "synthetic"
+    },
+    {
+      "id": "synthetic-fixture-record-3",
+      "outcome": "loss",
+      "role": null,
+      "mode": "competitive",
+      "entryKind": "synthetic",
+      "fieldOrigin": "synthetic"
+    },
+    {
+      "id": "synthetic-fixture-record-4",
+      "outcome": "win",
+      "role": null,
+      "mode": "quick-play",
+      "entryKind": "synthetic",
+      "fieldOrigin": "synthetic"
+    },
+    {
+      "id": "synthetic-fixture-record-5",
+      "outcome": "loss",
+      "role": null,
+      "mode": "competitive",
+      "entryKind": "synthetic",
+      "fieldOrigin": "synthetic"
+    },
+    {
+      "id": "synthetic-fixture-record-6",
+      "outcome": "loss",
+      "role": null,
+      "mode": "quick-play",
+      "entryKind": "synthetic",
+      "fieldOrigin": "synthetic"
+    },
+    {
+      "id": "synthetic-fixture-record-7",
+      "outcome": "win",
+      "role": null,
+      "mode": "competitive",
+      "entryKind": "synthetic",
+      "fieldOrigin": "synthetic"
+    },
+    {
+      "id": "synthetic-fixture-record-8",
+      "outcome": "win",
+      "role": null,
+      "mode": "quick-play",
+      "entryKind": "synthetic",
+      "fieldOrigin": "synthetic"
+    },
+    {
+      "id": "synthetic-fixture-record-9",
+      "outcome": "win",
+      "role": null,
+      "mode": "competitive",
+      "entryKind": "synthetic",
+      "fieldOrigin": "synthetic"
+    },
+    {
+      "id": "synthetic-fixture-record-10",
+      "outcome": "loss",
+      "role": null,
+      "mode": "quick-play",
+      "entryKind": "synthetic",
+      "fieldOrigin": "synthetic"
+    },
+    {
+      "id": "synthetic-fixture-record-11",
+      "outcome": "win",
+      "role": null,
+      "mode": "competitive",
+      "entryKind": "synthetic",
+      "fieldOrigin": "synthetic"
+    },
+    {
+      "id": "synthetic-fixture-record-12",
+      "outcome": "loss",
+      "role": null,
+      "mode": "quick-play",
+      "entryKind": "synthetic",
+      "fieldOrigin": "synthetic"
+    },
+    {
+      "id": "synthetic-fixture-record-13",
+      "outcome": "loss",
+      "role": null,
+      "mode": "competitive",
+      "entryKind": "synthetic",
+      "fieldOrigin": "synthetic"
+    },
+    {
+      "id": "synthetic-fixture-record-14",
+      "outcome": "win",
+      "role": null,
+      "mode": "quick-play",
+      "entryKind": "synthetic",
+      "fieldOrigin": "synthetic"
+    },
+    {
+      "id": "synthetic-fixture-record-15",
+      "outcome": "win",
+      "role": null,
+      "mode": "competitive",
+      "entryKind": "synthetic",
+      "fieldOrigin": "synthetic"
+    },
+    {
+      "id": "synthetic-fixture-record-16",
+      "outcome": "win",
+      "role": null,
+      "mode": "quick-play",
+      "entryKind": "synthetic",
+      "fieldOrigin": "synthetic"
+    },
+    {
+      "id": "synthetic-fixture-record-17",
+      "outcome": "win",
+      "role": null,
+      "mode": "competitive",
+      "entryKind": "synthetic",
+      "fieldOrigin": "synthetic"
+    },
+    {
+      "id": "synthetic-fixture-record-18",
+      "outcome": "loss",
+      "role": null,
+      "mode": "quick-play",
+      "entryKind": "synthetic",
+      "fieldOrigin": "synthetic"
+    },
+    {
+      "id": "synthetic-fixture-record-19",
+      "outcome": "win",
+      "role": null,
+      "mode": "competitive",
+      "entryKind": "synthetic",
+      "fieldOrigin": "synthetic"
+    },
+    {
+      "id": "synthetic-fixture-record-20",
+      "outcome": "win",
+      "role": null,
+      "mode": "quick-play",
+      "entryKind": "synthetic",
+      "fieldOrigin": "synthetic"
+    },
+    {
+      "id": "synthetic-fixture-record-21",
+      "outcome": "loss",
+      "role": null,
+      "mode": "competitive",
+      "entryKind": "synthetic",
+      "fieldOrigin": "synthetic"
+    },
+    {
+      "id": "synthetic-fixture-record-22",
+      "outcome": "win",
+      "role": null,
+      "mode": "quick-play",
+      "entryKind": "synthetic",
+      "fieldOrigin": "synthetic"
+    },
+    {
+      "id": "synthetic-fixture-record-23",
+      "outcome": "win",
+      "role": null,
+      "mode": "competitive",
+      "entryKind": "synthetic",
+      "fieldOrigin": "synthetic"
+    },
+    {
+      "id": "synthetic-fixture-record-24",
+      "outcome": "win",
+      "role": null,
+      "mode": "quick-play",
+      "entryKind": "synthetic",
+      "fieldOrigin": "synthetic"
+    },
+    {
+      "id": "synthetic-fixture-record-25",
+      "outcome": "win",
+      "role": null,
+      "mode": "competitive",
+      "entryKind": "synthetic",
+      "fieldOrigin": "synthetic"
+    },
+    {
+      "id": "synthetic-fixture-record-26",
+      "outcome": "loss",
+      "role": null,
+      "mode": "quick-play",
+      "entryKind": "synthetic",
+      "fieldOrigin": "synthetic"
+    },
+    {
+      "id": "synthetic-fixture-record-27",
+      "outcome": "win",
+      "role": null,
+      "mode": "competitive",
+      "entryKind": "synthetic",
+      "fieldOrigin": "synthetic"
+    },
+    {
+      "id": "synthetic-fixture-record-28",
+      "outcome": "win",
+      "role": null,
+      "mode": "quick-play",
+      "entryKind": "synthetic",
+      "fieldOrigin": "synthetic"
+    },
+    {
+      "id": "synthetic-fixture-record-29",
+      "outcome": "win",
+      "role": null,
+      "mode": "competitive",
+      "entryKind": "synthetic",
+      "fieldOrigin": "synthetic"
+    },
+    {
+      "id": "synthetic-fixture-record-30",
+      "outcome": "loss",
+      "role": null,
+      "mode": "quick-play",
+      "entryKind": "synthetic",
+      "fieldOrigin": "synthetic"
+    },
+    {
+      "id": "synthetic-fixture-record-31",
+      "outcome": "loss",
+      "role": null,
+      "mode": "competitive",
+      "entryKind": "synthetic",
+      "fieldOrigin": "synthetic"
+    },
+    {
+      "id": "synthetic-fixture-record-32",
+      "outcome": "win",
+      "role": null,
+      "mode": "quick-play",
+      "entryKind": "synthetic",
+      "fieldOrigin": "synthetic"
+    },
+    {
+      "id": "synthetic-fixture-record-33",
+      "outcome": "win",
+      "role": null,
+      "mode": "competitive",
+      "entryKind": "synthetic",
+      "fieldOrigin": "synthetic"
+    },
+    {
+      "id": "synthetic-fixture-record-34",
+      "outcome": "win",
+      "role": null,
+      "mode": "quick-play",
+      "entryKind": "synthetic",
+      "fieldOrigin": "synthetic"
+    },
+    {
+      "id": "synthetic-fixture-record-35",
+      "outcome": "loss",
+      "role": null,
+      "mode": "competitive",
+      "entryKind": "synthetic",
+      "fieldOrigin": "synthetic"
+    },
+    {
+      "id": "synthetic-fixture-record-36",
+      "outcome": "loss",
+      "role": null,
+      "mode": "quick-play",
+      "entryKind": "synthetic",
+      "fieldOrigin": "synthetic"
+    },
+    {
+      "id": "synthetic-fixture-record-37",
+      "outcome": "win",
+      "role": null,
+      "mode": "competitive",
+      "entryKind": "synthetic",
+      "fieldOrigin": "synthetic"
+    },
+    {
+      "id": "synthetic-fixture-record-38",
+      "outcome": "loss",
+      "role": null,
+      "mode": "quick-play",
+      "entryKind": "synthetic",
+      "fieldOrigin": "synthetic"
+    },
+    {
+      "id": "synthetic-fixture-record-39",
+      "outcome": "loss",
+      "role": null,
+      "mode": "competitive",
+      "entryKind": "synthetic",
+      "fieldOrigin": "synthetic"
+    },
+    {
+      "id": "synthetic-fixture-record-40",
+      "outcome": "loss",
+      "role": null,
+      "mode": "quick-play",
+      "entryKind": "synthetic",
+      "fieldOrigin": "synthetic"
+    },
+    {
+      "id": "synthetic-fixture-record-41",
+      "outcome": "win",
+      "role": null,
+      "mode": "competitive",
+      "entryKind": "synthetic",
+      "fieldOrigin": "synthetic"
+    },
+    {
+      "id": "synthetic-fixture-record-42",
+      "outcome": "loss",
+      "role": null,
+      "mode": "quick-play",
+      "entryKind": "synthetic",
+      "fieldOrigin": "synthetic"
+    },
+    {
+      "id": "synthetic-fixture-record-43",
+      "outcome": "win",
+      "role": null,
+      "mode": "competitive",
+      "entryKind": "synthetic",
+      "fieldOrigin": "synthetic"
+    },
+    {
+      "id": "synthetic-fixture-record-44",
+      "outcome": "win",
+      "role": null,
+      "mode": "quick-play",
+      "entryKind": "synthetic",
+      "fieldOrigin": "synthetic"
+    },
+    {
+      "id": "synthetic-fixture-record-45",
+      "outcome": "loss",
+      "role": null,
+      "mode": "competitive",
+      "entryKind": "synthetic",
+      "fieldOrigin": "synthetic"
+    },
+    {
+      "id": "synthetic-fixture-record-46",
+      "outcome": "loss",
+      "role": null,
+      "mode": "quick-play",
+      "entryKind": "synthetic",
+      "fieldOrigin": "synthetic"
+    },
+    {
+      "id": "synthetic-fixture-record-47",
+      "outcome": "loss",
+      "role": null,
+      "mode": "competitive",
+      "entryKind": "synthetic",
+      "fieldOrigin": "synthetic"
+    },
+    {
+      "id": "synthetic-fixture-record-48",
+      "outcome": "loss",
+      "role": null,
+      "mode": "quick-play",
+      "entryKind": "synthetic",
+      "fieldOrigin": "synthetic"
+    },
+    {
+      "id": "synthetic-fixture-record-49",
+      "outcome": "loss",
+      "role": null,
+      "mode": "competitive",
+      "entryKind": "synthetic",
+      "fieldOrigin": "synthetic"
+    },
+    {
+      "id": "synthetic-fixture-record-50",
+      "outcome": "win",
+      "role": null,
+      "mode": "quick-play",
+      "entryKind": "synthetic",
+      "fieldOrigin": "synthetic"
+    },
+    {
+      "id": "synthetic-fixture-record-51",
+      "outcome": "win",
+      "role": null,
+      "mode": "competitive",
+      "entryKind": "synthetic",
+      "fieldOrigin": "synthetic"
+    },
+    {
+      "id": "synthetic-fixture-record-52",
+      "outcome": "loss",
+      "role": null,
+      "mode": "quick-play",
+      "entryKind": "synthetic",
+      "fieldOrigin": "synthetic"
+    },
+    {
+      "id": "synthetic-fixture-record-53",
+      "outcome": "loss",
+      "role": null,
+      "mode": "competitive",
+      "entryKind": "synthetic",
+      "fieldOrigin": "synthetic"
+    },
+    {
+      "id": "synthetic-fixture-record-54",
+      "outcome": "loss",
+      "role": null,
+      "mode": "quick-play",
+      "entryKind": "synthetic",
+      "fieldOrigin": "synthetic"
+    },
+    {
+      "id": "synthetic-fixture-record-55",
+      "outcome": "loss",
+      "role": null,
+      "mode": "competitive",
+      "entryKind": "synthetic",
+      "fieldOrigin": "synthetic"
+    },
+    {
+      "id": "synthetic-fixture-record-56",
+      "outcome": "loss",
+      "role": null,
+      "mode": "quick-play",
+      "entryKind": "synthetic",
+      "fieldOrigin": "synthetic"
+    },
+    {
+      "id": "synthetic-fixture-record-57",
+      "outcome": "loss",
+      "role": null,
+      "mode": "competitive",
+      "entryKind": "synthetic",
+      "fieldOrigin": "synthetic"
+    },
+    {
+      "id": "synthetic-fixture-record-58",
+      "outcome": "loss",
+      "role": null,
+      "mode": "quick-play",
+      "entryKind": "synthetic",
+      "fieldOrigin": "synthetic"
+    },
+    {
+      "id": "synthetic-fixture-record-59",
+      "outcome": "loss",
+      "role": null,
+      "mode": "competitive",
+      "entryKind": "synthetic",
+      "fieldOrigin": "synthetic"
+    },
+    {
+      "id": "synthetic-fixture-record-60",
+      "outcome": "loss",
+      "role": null,
+      "mode": "quick-play",
+      "entryKind": "synthetic",
+      "fieldOrigin": "synthetic"
+    }
+  ],
+  "chronology": {
+    "recordIdsOldestToNewest": [
+      "synthetic-fixture-record-1",
+      "synthetic-fixture-record-2",
+      "synthetic-fixture-record-3",
+      "synthetic-fixture-record-4",
+      "synthetic-fixture-record-5",
+      "synthetic-fixture-record-6",
+      "synthetic-fixture-record-7",
+      "synthetic-fixture-record-8",
+      "synthetic-fixture-record-9",
+      "synthetic-fixture-record-10",
+      "synthetic-fixture-record-11",
+      "synthetic-fixture-record-12",
+      "synthetic-fixture-record-13",
+      "synthetic-fixture-record-14",
+      "synthetic-fixture-record-15",
+      "synthetic-fixture-record-16",
+      "synthetic-fixture-record-17",
+      "synthetic-fixture-record-18",
+      "synthetic-fixture-record-19",
+      "synthetic-fixture-record-20",
+      "synthetic-fixture-record-21",
+      "synthetic-fixture-record-22",
+      "synthetic-fixture-record-23",
+      "synthetic-fixture-record-24",
+      "synthetic-fixture-record-25",
+      "synthetic-fixture-record-26",
+      "synthetic-fixture-record-27",
+      "synthetic-fixture-record-28",
+      "synthetic-fixture-record-29",
+      "synthetic-fixture-record-30",
+      "synthetic-fixture-record-31",
+      "synthetic-fixture-record-32",
+      "synthetic-fixture-record-33",
+      "synthetic-fixture-record-34",
+      "synthetic-fixture-record-35",
+      "synthetic-fixture-record-36",
+      "synthetic-fixture-record-37",
+      "synthetic-fixture-record-38",
+      "synthetic-fixture-record-39",
+      "synthetic-fixture-record-40",
+      "synthetic-fixture-record-41",
+      "synthetic-fixture-record-42",
+      "synthetic-fixture-record-43",
+      "synthetic-fixture-record-44",
+      "synthetic-fixture-record-45",
+      "synthetic-fixture-record-46",
+      "synthetic-fixture-record-47",
+      "synthetic-fixture-record-48",
+      "synthetic-fixture-record-49",
+      "synthetic-fixture-record-50",
+      "synthetic-fixture-record-51",
+      "synthetic-fixture-record-52",
+      "synthetic-fixture-record-53",
+      "synthetic-fixture-record-54",
+      "synthetic-fixture-record-55",
+      "synthetic-fixture-record-56",
+      "synthetic-fixture-record-57",
+      "synthetic-fixture-record-58",
+      "synthetic-fixture-record-59",
+      "synthetic-fixture-record-60"
+    ]
+  }
+}

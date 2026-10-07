@@ -1,0 +1,22 @@
+<svg class="symbols" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+<symbol id="i-all" viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5Zm-9 9 9 5 9-5M3 16l9 5 9-5"/></symbol>
+<symbol id="i-next" viewBox="0 0 24 24"><path d="m8 6 6 6-6 6m6-12 6 6-6 6"/></symbol>
+<symbol id="i-tank" viewBox="0 0 24 24"><path d="M12 3 4.5 6v5c0 5 3.1 8 7.5 10 4.4-2 7.5-5 7.5-10V6Z"/><path d="M12 7v9m-4-4h8"/></symbol>
+<symbol id="i-damage" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6.5"/><path d="M12 2v5m0 10v5M2 12h5m10 0h5"/><circle cx="12" cy="12" r="1" fill="currentColor" stroke="none"/></symbol>
+<symbol id="i-support" viewBox="0 0 24 24"><path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6Z"/></symbol>
+<symbol id="i-home" viewBox="0 0 24 24"><path d="m3 10 9-7 9 7M5 9v11h14V9m-10 11v-7h6v7"/></symbol>
+<symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 4v16h16M8 15v-4m5 4V7m5 8v-6"/></symbol>
+<symbol id="i-history" viewBox="0 0 24 24"><path d="M3 11a9 9 0 1 1 2.5 7M3 4v7h7m2-4v5l3 2"/></symbol>
+<symbol id="i-more" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1" fill="currentColor"/><circle cx="12" cy="12" r="1" fill="currentColor"/><circle cx="19" cy="12" r="1" fill="currentColor"/></symbol>
+<symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h16m-5-5 5 5-5 5"/></symbol>
+<symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 3 10 5-10 5L2 8Zm-9 9 9 4.5 9-4.5M3 16l9 4.5 9-4.5"/></symbol>
+<symbol id="i-markov" viewBox="0 0 24 24"><circle cx="5" cy="16" r="2.5"/><circle cx="18" cy="6" r="2.5"/><path d="M7.5 15c7 0 1-9 8-9m-5 0 3-2m-3 2 2 3"/><path d="M18 9v6h-6"/></symbol>
+<symbol id="i-change" viewBox="0 0 24 24"><path d="M2 16h7V8h13M9 3v2m0 14v2"/><circle cx="9" cy="8" r="1.5" fill="currentColor" stroke="none"/></symbol>
+<symbol id="i-share" viewBox="0 0 24 24"><path d="m6 4 9 8-9 8M6 12h9m0 0h5"/><circle cx="4" cy="4" r="1.5"/><circle cx="4" cy="12" r="1.5"/><circle cx="4" cy="20" r="1.5"/><circle cx="19" cy="12" r="2.5" fill="var(--model-soft,#fff)"/></symbol>
+<symbol id="i-pencil" viewBox="0 0 24 24"><path d="m14 4 6 6M4 20l1-6L16 3l5 5-11 11Zm0 0 6-1"/></symbol>
+<symbol id="i-cup" viewBox="0 0 24 24"><path d="M7 3h10v7c0 4-10 4-10 0Zm0 2H3v3c0 3 2 4 5 4m9-7h4v3c0 3-2 4-5 4m-4 2v6m-5 0h10"/></symbol>
+<symbol id="i-close" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="m9 9 6 6m0-6-6 6"/></symbol>
+<symbol id="i-dismiss" viewBox="0 0 24 24"><path d="m7 7 10 10M17 7 7 17"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4.5 4.5L19 7"/></symbol>
+<symbol id="i-storage" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v13c0 4 16 4 16 0V5M4 11c0 4 16 4 16 0"/></symbol>
+</defs></svg>

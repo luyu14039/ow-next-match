@@ -1,0 +1,851 @@
+{
+  "sourceKind": "synthetic",
+  "syntheticRecords": [
+    {
+      "ordinal": 1,
+      "role": "tank",
+      "mode": "quick-play",
+      "outcome": "win"
+    },
+    {
+      "ordinal": 2,
+      "role": "damage",
+      "mode": "competitive",
+      "outcome": "loss"
+    },
+    {
+      "ordinal": 3,
+      "role": "support",
+      "mode": "arcade",
+      "outcome": "win"
+    },
+    {
+      "ordinal": 4,
+      "role": "tank",
+      "mode": null,
+      "outcome": "win"
+    },
+    {
+      "ordinal": 5,
+      "role": "damage",
+      "mode": "quick-play",
+      "outcome": "win"
+    },
+    {
+      "ordinal": 6,
+      "role": "support",
+      "mode": "competitive",
+      "outcome": "loss"
+    },
+    {
+      "ordinal": 7,
+      "role": "tank",
+      "mode": "arcade",
+      "outcome": "loss"
+    },
+    {
+      "ordinal": 8,
+      "role": "damage",
+      "mode": null,
+      "outcome": "loss"
+    },
+    {
+      "ordinal": 9,
+      "role": "support",
+      "mode": "quick-play",
+      "outcome": "win"
+    },
+    {
+      "ordinal": 10,
+      "role": "tank",
+      "mode": "competitive",
+      "outcome": "win"
+    },
+    {
+      "ordinal": 11,
+      "role": "damage",
+      "mode": "arcade",
+      "outcome": "loss"
+    },
+    {
+      "ordinal": 12,
+      "role": "support",
+      "mode": null,
+      "outcome": "win"
+    },
+    {
+      "ordinal": 13,
+      "role": "tank",
+      "mode": "quick-play",
+      "outcome": "loss"
+    },
+    {
+      "ordinal": 14,
+      "role": "damage",
+      "mode": "competitive",
+      "outcome": "win"
+    },
+    {
+      "ordinal": 15,
+      "role": "support",
+      "mode": "arcade",
+      "outcome": "loss"
+    },
+    {
+      "ordinal": 16,
+      "role": "tank",
+      "mode": null,
+      "outcome": "loss"
+    },
+    {
+      "ordinal": 17,
+      "role": "damage",
+      "mode": "quick-play",
+      "outcome": "loss"
+    },
+    {
+      "ordinal": 18,
+      "role": "support",
+      "mode": "competitive",
+      "outcome": "win"
+    },
+    {
+      "ordinal": 19,
+      "role": "tank",
+      "mode": "arcade",
+      "outcome": "win"
+    },
+    {
+      "ordinal": 20,
+      "role": "damage",
+      "mode": null,
+      "outcome": "win"
+    },
+    {
+      "ordinal": 21,
+      "role": "support",
+      "mode": "quick-play",
+      "outcome": "loss"
+    },
+    {
+      "ordinal": 22,
+      "role": "tank",
+      "mode": "competitive",
+      "outcome": "win"
+    },
+    {
+      "ordinal": 23,
+      "role": "damage",
+      "mode": "arcade",
+      "outcome": "loss"
+    },
+    {
+      "ordinal": 24,
+      "role": "support",
+      "mode": null,
+      "outcome": "win"
+    },
+    {
+      "ordinal": 25,
+      "role": "tank",
+      "mode": "quick-play",
+      "outcome": "win"
+    },
+    {
+      "ordinal": 26,
+      "role": "damage",
+      "mode": "competitive",
+      "outcome": "win"
+    },
+    {
+      "ordinal": 27,
+      "role": "support",
+      "mode": "arcade",
+      "outcome": "loss"
+    },
+    {
+      "ordinal": 28,
+      "role": "tank",
+      "mode": null,
+      "outcome": "loss"
+    },
+    {
+      "ordinal": 29,
+      "role": "damage",
+      "mode": "quick-play",
+      "outcome": "win"
+    },
+    {
+      "ordinal": 30,
+      "role": "support",
+      "mode": "competitive",
+      "outcome": "win"
+    },
+    {
+      "ordinal": 31,
+      "role": "tank",
+      "mode": "arcade",
+      "outcome": "win"
+    },
+    {
+      "ordinal": 32,
+      "role": "damage",
+      "mode": null,
+      "outcome": "loss"
+    },
+    {
+      "ordinal": 33,
+      "role": "support",
+      "mode": "quick-play",
+      "outcome": "win"
+    },
+    {
+      "ordinal": 34,
+      "role": "tank",
+      "mode": "competitive",
+      "outcome": "loss"
+    },
+    {
+      "ordinal": 35,
+      "role": "damage",
+      "mode": "arcade",
+      "outcome": "win"
+    },
+    {
+      "ordinal": 36,
+      "role": "support",
+      "mode": null,
+      "outcome": "loss"
+    },
+    {
+      "ordinal": 37,
+      "role": "tank",
+      "mode": "quick-play",
+      "outcome": "loss"
+    },
+    {
+      "ordinal": 38,
+      "role": "damage",
+      "mode": "competitive",
+      "outcome": "loss"
+    },
+    {
+      "ordinal": 39,
+      "role": "support",
+      "mode": "arcade",
+      "outcome": "loss"
+    },
+    {
+      "ordinal": 40,
+      "role": "tank",
+      "mode": null,
+      "outcome": "win"
+    },
+    {
+      "ordinal": 41,
+      "role": "damage",
+      "mode": "quick-play",
+      "outcome": "win"
+    },
+    {
+      "ordinal": 42,
+      "role": "support",
+      "mode": "competitive",
+      "outcome": "win"
+    },
+    {
+      "ordinal": 43,
+      "role": "tank",
+      "mode": "arcade",
+      "outcome": "loss"
+    },
+    {
+      "ordinal": 44,
+      "role": "damage",
+      "mode": null,
+      "outcome": "loss"
+    },
+    {
+      "ordinal": 45,
+      "role": "support",
+      "mode": "quick-play",
+      "outcome": "loss"
+    },
+    {
+      "ordinal": 46,
+      "role": "tank",
+      "mode": "competitive",
+      "outcome": "win"
+    },
+    {
+      "ordinal": 47,
+      "role": "damage",
+      "mode": "arcade",
+      "outcome": "loss"
+    },
+    {
+      "ordinal": 48,
+      "role": "support",
+      "mode": null,
+      "outcome": "win"
+    },
+    {
+      "ordinal": 49,
+      "role": "tank",
+      "mode": "quick-play",
+      "outcome": "win"
+    },
+    {
+      "ordinal": 50,
+      "role": "damage",
+      "mode": "competitive",
+      "outcome": "win"
+    },
+    {
+      "ordinal": 51,
+      "role": "support",
+      "mode": "arcade",
+      "outcome": "win"
+    },
+    {
+      "ordinal": 52,
+      "role": "tank",
+      "mode": null,
+      "outcome": "loss"
+    },
+    {
+      "ordinal": 53,
+      "role": "damage",
+      "mode": "quick-play",
+      "outcome": "win"
+    },
+    {
+      "ordinal": 54,
+      "role": "support",
+      "mode": "competitive",
+      "outcome": "loss"
+    },
+    {
+      "ordinal": 55,
+      "role": "tank",
+      "mode": "arcade",
+      "outcome": "win"
+    },
+    {
+      "ordinal": 56,
+      "role": "support",
+      "mode": null,
+      "outcome": "win"
+    },
+    {
+      "ordinal": 57,
+      "role": "tank",
+      "mode": "quick-play",
+      "outcome": "loss"
+    },
+    {
+      "ordinal": 58,
+      "role": "support",
+      "mode": "competitive",
+      "outcome": "win"
+    },
+    {
+      "ordinal": 59,
+      "role": "support",
+      "mode": "arcade",
+      "outcome": "loss"
+    },
+    {
+      "ordinal": 60,
+      "role": "support",
+      "mode": null,
+      "outcome": "win"
+    },
+    {
+      "ordinal": 61,
+      "role": "support",
+      "mode": "quick-play",
+      "outcome": "loss"
+    },
+    {
+      "ordinal": 62,
+      "role": "support",
+      "mode": "competitive",
+      "outcome": "win"
+    },
+    {
+      "ordinal": 63,
+      "role": null,
+      "mode": null,
+      "outcome": "win"
+    },
+    {
+      "ordinal": 64,
+      "role": null,
+      "mode": null,
+      "outcome": "loss"
+    }
+  ],
+  "preview": {
+    "views": {
+      "all": {
+        "n": 64,
+        "base": {
+          "fair50": 0.5,
+          "beta10": 0.55,
+          "beta30": 0.525,
+          "markov30": 0.5652173913043478,
+          "bocpd": 0.5338983152025976,
+          "hedge": 0.5246947830686467,
+          "fixedShare": 0.5335897168375872
+        }
+      },
+      "tank": {
+        "n": 20,
+        "base": {
+          "fair50": 0.5,
+          "beta10": 0.5,
+          "beta30": 0.5333333333333333,
+          "markov30": 0.6111111111111112,
+          "bocpd": 0.5171120526613789,
+          "hedge": 0.5358957502142376,
+          "fixedShare": 0.5367352239308857
+        }
+      },
+      "damage": {
+        "n": 18,
+        "base": {
+          "fair50": 0.5,
+          "beta10": 0.55,
+          "beta30": 0.5,
+          "markov30": 0.3888888888888889,
+          "bocpd": 0.5130754891503669,
+          "hedge": 0.46631868997513043,
+          "fixedShare": 0.47465219767105
+        }
+      },
+      "support": {
+        "n": 24,
+        "base": {
+          "fair50": 0.5,
+          "beta10": 0.55,
+          "beta30": 0.5588235294117647,
+          "markov30": 0.391304347826087,
+          "bocpd": 0.5489269178983317,
+          "hedge": 0.4480908735273629,
+          "fixedShare": 0.464521209461306
+        }
+      }
+    },
+    "branches": {
+      "all": {
+        "win": {
+          "all": {
+            "n": 65,
+            "base": {
+              "fair50": 0.5,
+              "beta10": 0.55,
+              "beta30": 0.525,
+              "markov30": 0.48,
+              "bocpd": 0.5504488821587928,
+              "hedge": 0.5151162983484988,
+              "fixedShare": 0.5174859644003862
+            }
+          },
+          "tank": {
+            "n": 20,
+            "base": {
+              "fair50": 0.5,
+              "beta10": 0.5,
+              "beta30": 0.5333333333333333,
+              "markov30": 0.6111111111111112,
+              "bocpd": 0.5171120526613789,
+              "hedge": 0.5358957502142376,
+              "fixedShare": 0.5367352239308857
+            }
+          },
+          "damage": {
+            "n": 18,
+            "base": {
+              "fair50": 0.5,
+              "beta10": 0.55,
+              "beta30": 0.5,
+              "markov30": 0.3888888888888889,
+              "bocpd": 0.5130754891503669,
+              "hedge": 0.46631868997513043,
+              "fixedShare": 0.47465219767105
+            }
+          },
+          "support": {
+            "n": 24,
+            "base": {
+              "fair50": 0.5,
+              "beta10": 0.55,
+              "beta30": 0.5588235294117647,
+              "markov30": 0.391304347826087,
+              "bocpd": 0.5489269178983317,
+              "hedge": 0.4480908735273629,
+              "fixedShare": 0.464521209461306
+            }
+          }
+        },
+        "loss": {
+          "all": {
+            "n": 65,
+            "base": {
+              "fair50": 0.5,
+              "beta10": 0.5,
+              "beta30": 0.5,
+              "markov30": 0.5416666666666666,
+              "bocpd": 0.512516149081531,
+              "hedge": 0.5069332706419718,
+              "fixedShare": 0.5107491673843906
+            }
+          },
+          "tank": {
+            "n": 20,
+            "base": {
+              "fair50": 0.5,
+              "beta10": 0.5,
+              "beta30": 0.5333333333333333,
+              "markov30": 0.6111111111111112,
+              "bocpd": 0.5171120526613789,
+              "hedge": 0.5358957502142376,
+              "fixedShare": 0.5367352239308857
+            }
+          },
+          "damage": {
+            "n": 18,
+            "base": {
+              "fair50": 0.5,
+              "beta10": 0.55,
+              "beta30": 0.5,
+              "markov30": 0.3888888888888889,
+              "bocpd": 0.5130754891503669,
+              "hedge": 0.46631868997513043,
+              "fixedShare": 0.47465219767105
+            }
+          },
+          "support": {
+            "n": 24,
+            "base": {
+              "fair50": 0.5,
+              "beta10": 0.55,
+              "beta30": 0.5588235294117647,
+              "markov30": 0.391304347826087,
+              "bocpd": 0.5489269178983317,
+              "hedge": 0.4480908735273629,
+              "fixedShare": 0.464521209461306
+            }
+          }
+        }
+      },
+      "tank": {
+        "win": {
+          "all": {
+            "n": 65,
+            "base": {
+              "fair50": 0.5,
+              "beta10": 0.55,
+              "beta30": 0.525,
+              "markov30": 0.48,
+              "bocpd": 0.5504488821587928,
+              "hedge": 0.5151162983484988,
+              "fixedShare": 0.5174859644003862
+            }
+          },
+          "tank": {
+            "n": 21,
+            "base": {
+              "fair50": 0.5,
+              "beta10": 0.5,
+              "beta30": 0.5483870967741935,
+              "markov30": 0.42857142857142855,
+              "bocpd": 0.5380536109135647,
+              "hedge": 0.49225292567135165,
+              "fixedShare": 0.49317379829814684
+            }
+          },
+          "damage": {
+            "n": 18,
+            "base": {
+              "fair50": 0.5,
+              "beta10": 0.55,
+              "beta30": 0.5,
+              "markov30": 0.3888888888888889,
+              "bocpd": 0.5130754891503669,
+              "hedge": 0.46631868997513043,
+              "fixedShare": 0.47465219767105
+            }
+          },
+          "support": {
+            "n": 24,
+            "base": {
+              "fair50": 0.5,
+              "beta10": 0.55,
+              "beta30": 0.5588235294117647,
+              "markov30": 0.391304347826087,
+              "bocpd": 0.5489269178983317,
+              "hedge": 0.4480908735273629,
+              "fixedShare": 0.464521209461306
+            }
+          }
+        },
+        "loss": {
+          "all": {
+            "n": 65,
+            "base": {
+              "fair50": 0.5,
+              "beta10": 0.5,
+              "beta30": 0.5,
+              "markov30": 0.5416666666666666,
+              "bocpd": 0.512516149081531,
+              "hedge": 0.5069332706419718,
+              "fixedShare": 0.5107491673843906
+            }
+          },
+          "tank": {
+            "n": 21,
+            "base": {
+              "fair50": 0.5,
+              "beta10": 0.45,
+              "beta30": 0.5161290322580645,
+              "markov30": 0.5789473684210527,
+              "bocpd": 0.4935050564795066,
+              "hedge": 0.5080194607612105,
+              "fixedShare": 0.5082404469011848
+            }
+          },
+          "damage": {
+            "n": 18,
+            "base": {
+              "fair50": 0.5,
+              "beta10": 0.55,
+              "beta30": 0.5,
+              "markov30": 0.3888888888888889,
+              "bocpd": 0.5130754891503669,
+              "hedge": 0.46631868997513043,
+              "fixedShare": 0.47465219767105
+            }
+          },
+          "support": {
+            "n": 24,
+            "base": {
+              "fair50": 0.5,
+              "beta10": 0.55,
+              "beta30": 0.5588235294117647,
+              "markov30": 0.391304347826087,
+              "bocpd": 0.5489269178983317,
+              "hedge": 0.4480908735273629,
+              "fixedShare": 0.464521209461306
+            }
+          }
+        }
+      },
+      "damage": {
+        "win": {
+          "all": {
+            "n": 65,
+            "base": {
+              "fair50": 0.5,
+              "beta10": 0.55,
+              "beta30": 0.525,
+              "markov30": 0.48,
+              "bocpd": 0.5504488821587928,
+              "hedge": 0.5151162983484988,
+              "fixedShare": 0.5174859644003862
+            }
+          },
+          "tank": {
+            "n": 20,
+            "base": {
+              "fair50": 0.5,
+              "beta10": 0.5,
+              "beta30": 0.5333333333333333,
+              "markov30": 0.6111111111111112,
+              "bocpd": 0.5171120526613789,
+              "hedge": 0.5358957502142376,
+              "fixedShare": 0.5367352239308857
+            }
+          },
+          "damage": {
+            "n": 19,
+            "base": {
+              "fair50": 0.5,
+              "beta10": 0.55,
+              "beta30": 0.5172413793103449,
+              "markov30": 0.42105263157894735,
+              "bocpd": 0.5347965689582188,
+              "hedge": 0.49038135939808447,
+              "fixedShare": 0.49743338030309775
+            }
+          },
+          "support": {
+            "n": 24,
+            "base": {
+              "fair50": 0.5,
+              "beta10": 0.55,
+              "beta30": 0.5588235294117647,
+              "markov30": 0.391304347826087,
+              "bocpd": 0.5489269178983317,
+              "hedge": 0.4480908735273629,
+              "fixedShare": 0.464521209461306
+            }
+          }
+        },
+        "loss": {
+          "all": {
+            "n": 65,
+            "base": {
+              "fair50": 0.5,
+              "beta10": 0.5,
+              "beta30": 0.5,
+              "markov30": 0.5416666666666666,
+              "bocpd": 0.512516149081531,
+              "hedge": 0.5069332706419718,
+              "fixedShare": 0.5107491673843906
+            }
+          },
+          "tank": {
+            "n": 20,
+            "base": {
+              "fair50": 0.5,
+              "beta10": 0.5,
+              "beta30": 0.5333333333333333,
+              "markov30": 0.6111111111111112,
+              "bocpd": 0.5171120526613789,
+              "hedge": 0.5358957502142376,
+              "fixedShare": 0.5367352239308857
+            }
+          },
+          "damage": {
+            "n": 19,
+            "base": {
+              "fair50": 0.5,
+              "beta10": 0.5,
+              "beta30": 0.4827586206896552,
+              "markov30": 0.631578947368421,
+              "bocpd": 0.48929274043347304,
+              "hedge": 0.553917625387537,
+              "fixedShare": 0.5436955534119766
+            }
+          },
+          "support": {
+            "n": 24,
+            "base": {
+              "fair50": 0.5,
+              "beta10": 0.55,
+              "beta30": 0.5588235294117647,
+              "markov30": 0.391304347826087,
+              "bocpd": 0.5489269178983317,
+              "hedge": 0.4480908735273629,
+              "fixedShare": 0.464521209461306
+            }
+          }
+        }
+      },
+      "support": {
+        "win": {
+          "all": {
+            "n": 65,
+            "base": {
+              "fair50": 0.5,
+              "beta10": 0.55,
+              "beta30": 0.525,
+              "markov30": 0.48,
+              "bocpd": 0.5504488821587928,
+              "hedge": 0.5151162983484988,
+              "fixedShare": 0.5174859644003862
+            }
+          },
+          "tank": {
+            "n": 20,
+            "base": {
+              "fair50": 0.5,
+              "beta10": 0.5,
+              "beta30": 0.5333333333333333,
+              "markov30": 0.6111111111111112,
+              "bocpd": 0.5171120526613789,
+              "hedge": 0.5358957502142376,
+              "fixedShare": 0.5367352239308857
+            }
+          },
+          "damage": {
+            "n": 18,
+            "base": {
+              "fair50": 0.5,
+              "beta10": 0.55,
+              "beta30": 0.5,
+              "markov30": 0.3888888888888889,
+              "bocpd": 0.5130754891503669,
+              "hedge": 0.46631868997513043,
+              "fixedShare": 0.47465219767105
+            }
+          },
+          "support": {
+            "n": 25,
+            "base": {
+              "fair50": 0.5,
+              "beta10": 0.6,
+              "beta30": 0.5714285714285714,
+              "markov30": 0.4166666666666667,
+              "bocpd": 0.5659856519405932,
+              "hedge": 0.48117740392576414,
+              "fixedShare": 0.49940876556885516
+            }
+          }
+        },
+        "loss": {
+          "all": {
+            "n": 65,
+            "base": {
+              "fair50": 0.5,
+              "beta10": 0.5,
+              "beta30": 0.5,
+              "markov30": 0.5416666666666666,
+              "bocpd": 0.512516149081531,
+              "hedge": 0.5069332706419718,
+              "fixedShare": 0.5107491673843906
+            }
+          },
+          "tank": {
+            "n": 20,
+            "base": {
+              "fair50": 0.5,
+              "beta10": 0.5,
+              "beta30": 0.5333333333333333,
+              "markov30": 0.6111111111111112,
+              "bocpd": 0.5171120526613789,
+              "hedge": 0.5358957502142376,
+              "fixedShare": 0.5367352239308857
+            }
+          },
+          "damage": {
+            "n": 18,
+            "base": {
+              "fair50": 0.5,
+              "beta10": 0.55,
+              "beta30": 0.5,
+              "markov30": 0.3888888888888889,
+              "bocpd": 0.5130754891503669,
+              "hedge": 0.46631868997513043,
+              "fixedShare": 0.47465219767105
+            }
+          },
+          "support": {
+            "n": 25,
+            "base": {
+              "fair50": 0.5,
+              "beta10": 0.55,
+              "beta30": 0.5428571428571428,
+              "markov30": 0.7,
+              "bocpd": 0.5245519418675839,
+              "hedge": 0.6413463863646465,
+              "fixedShare": 0.6222851116745113
+            }
+          }
+        }
+      }
+    }
+  }
+}
