@@ -5,4 +5,5 @@ import './styles/workspace.css';
 import './styles/product.css';
 import './styles/typography.css';
 import './styles/explanations.css';
+import './styles/forecast.css';
 createRoot(document.getElementById('root')!).render(<App/>);

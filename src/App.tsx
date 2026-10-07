@@ -7,6 +7,7 @@ import { ImportDrawer } from './ImportDrawer';
 import { DataDrawer, ModelSettings, RecordEditor } from './Tools';
 import { SCENARIO_NAMES, syntheticRecords, type Scenario } from './synthetic';
 import { ModelExplanation } from './ModelExplanation';
+import { MatchForecast } from './MatchForecast';
 
 export type Mutation = (next:AppData)=>void;
 export type Persist = (mutation:Mutation, message?:string, undo?:Mutation, blobs?:Map<string,Blob>)=>Promise<boolean>;
@@ -171,6 +172,7 @@ function Workspace(p:WorkspaceProps){
             <span className="recent-meta"><span>{r?String(r.ordinal).padStart(2,'0'):'—'}</span>{r && i===4 && <span className="latest-label">• 最新</span>}</span><span className="result-line"><span className="result-seal"><Icon name={r?.outcome==='win'?'check':r?.outcome==='loss'?'close':'history'}/></span>{r?(r.outcome==='win'?'胜':r.outcome==='loss'?'负':OUTCOME_NAMES[r.outcome]):'—'}</span>
           </button></li>)}
         </ol><div className="recent-connector" aria-hidden="true">{Array.from({length:5},(_,i)=><span key={i}/>)}</div></section><div className="section-rule"/>
+          <MatchForecast model={selected[0]} probability={result?.next[selected[0]]} count={count} reduced={data.reducedMotion} onExplain={()=>p.setExplain(selected[0])}/>
           <section className="prediction-section"><SectionTitle icon="chart" caption={<span className="scope-pill">{scopeText}</span>}>下一局胜率</SectionTitle><div className="model-row">{selected.map(id=><button className="model" key={id} data-model={id} style={{'--model':MODELS[id].color,'--model-soft':MODELS[id].color+'12'} as CSSProperties} aria-label={MODELS[id].name+'，下一条胜率 '+(result?(result.next[id]*100).toFixed(1)+'%':'计算中')+'，查看解释'} onClick={()=>p.setExplain(id)}>
             <span className="model-name"><span className="model-glyph"><Icon name={MODELS[id].icon}/></span>{MODELS[id].name}<Icon name="arrow" className="chevron"/></span><div className="probability">{result?<NumberTransition value={result.next[id]} reduced={data.reducedMotion}/>:<span className="number">…</span>}<span className="unit" aria-hidden="true">%</span></div><div className="probability-rail" aria-hidden="true"><div className="rail-fill" style={{width:(result?result.next[id]*100:50)+'%'}}/><span className="rail-mid"/></div><span className="model-summary">{MODELS[id].summary}</span>
           </button>)}</div><div className="scope-line"><p className="scope-caption"><Icon name="storage"/>{analysis.calculating?'正在计算完整历史…':count?'基于 '+count+' 条有效记录'+(scope==='all'?' · 含 '+records.filter(r=>r.role===null).length+' 条位置未指定':''):'50% 冷启动 · 记录第一局开始估计'}</p><span className="scale-caption">0–100% · 中点 50%</span></div><button className="fairness-link" onClick={()=>p.setExplain('eloFeedback')}><Icon name="next"/>Elo 反馈 · K {configuration.parameters.eloK??32} · 匹配响应 {Math.round((configuration.parameters.eloResponse??1)*100)}%<Icon name="arrow"/></button>

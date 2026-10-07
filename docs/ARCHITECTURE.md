@@ -5,6 +5,7 @@ React + TypeScript + Vite 的纯前端单页应用，无后端服务。
 | 目录 / 文件 | 作用 |
 | --- | --- |
 | src/App.tsx | 工作台、位置范围、分析和历史 |
+| src/MatchForecast.tsx | 首个展示模型的结果、对应概率及说明入口 |
 | src/ImportDrawer.tsx | 批量导入、人工校对与保存 |
 | src/ocr.ts | 同源 OCR 资源、行检测与 Worker 生命周期 |
 | src/models.ts | 八个数学模型实例及顺序评分 |
