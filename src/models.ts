@@ -1,13 +1,15 @@
 import { DEFAULT_PARAMETERS, MODEL_IDS, type Match, type ModelId, type Parameters, type Probabilities } from './domain';
 export const MODELS: Record<ModelId,{name:string;icon:string;color:string;summary:string;formula:string;detail:string}> = {
-  fair50:{name:'固定 50%',icon:'layers',color:'#8996a9',summary:'把公平随机作为共同参照',formula:'p = 0.5',detail:'如果下一条结果独立且公平，过去的输赢不会改变它。这个基准可以胜过复杂模型。'},
+  fair50:{name:'固定 50%',icon:'layers',color:'#8996a9',summary:'理想公平匹配的基准',formula:'p = 0.5',detail:'如果每局在已有信息下都完全公平，历史胜负不改变下一局的概率。'},
   beta10:{name:'Beta 10',icon:'chart',color:'#7c7db4',summary:'用短窗口估计近期胜率',formula:'p = (α + 最近 W 条胜数) / (2α + W内场数)',detail:'默认 Beta(5,5) 先验，把小样本估计向五五开收缩。短窗口默认 10 条。'},
   beta30:{name:'Beta 30',icon:'chart',color:'#728abd',summary:'用长窗口平滑近期胜率',formula:'p = (α + 最近 W 条胜数) / (2α + W内场数)',detail:'长窗口默认 30 条，反应更平缓。窗口内胜率近似不变是模型假设。'},
-  markov30:{name:'Markov',icon:'markov',color:'#3d75b1',summary:'看看胜负之间的转移',formula:'p(胜 | 上一条=a) = (α + Nₐ₁)/(2α + Nₐ₀ + Nₐ₁)',detail:'默认统计最近 30 个有效标签中未断开的相邻转移。允许连胜延续或反转，没有预设“连胜必输”。'},
-  bocpd:{name:'BOCPD',icon:'change',color:'#348274',summary:'留意状态是否发生变化',formula:'p = h/2 + (1−h) Σₖ q(k) (α + sₖ)/(2α + k)',detail:'维护当前状态段长度的贝叶斯后验。默认每条开始新段的先验概率 h=1/30。检测分布变化，不推断队友、疲劳或匹配系统的原因。'},
-  hedge:{name:'Hedge',icon:'share',color:'#8f739a',summary:'让过去误差决定专家权重',formula:'wᵢ ← normalize(wᵢ exp(−η(pᵢ−y)²))',detail:'五个基础专家：固定 50%、Beta 10、Beta 30、Markov、BOCPD。默认 η=2，用已经发生的误差更新权重。'},
-  fixedShare:{name:'Fixed-Share',icon:'share',color:'#b17a3d',summary:'让各个专家动态分工',formula:'wᵢ ← (1−γ) normalize(wᵢ exp(−η lossᵢ)) + γ/5',detail:'默认 γ=0.04，让少量权重均匀回流。环境变化时，曾经失宠的专家有机会重新参与。这是动态专家学习，不是隐藏分反演。'},
+  markov30:{name:'Markov',icon:'markov',color:'#3d75b1',summary:'统计上一局之后的胜负',formula:'p(胜 | 上一条=a) = (α + Nₐ₁)/(2α + Nₐ₀ + Nₐ₁)',detail:'统计最近有效记录中的相邻转移，不预设连胜延续或反转。'},
+  bocpd:{name:'BOCPD',icon:'change',color:'#348274',summary:'估计近期胜率的变化',formula:'p = h/2 + (1−h) Σₖ q(k) (α + sₖ)/(2α + k)',detail:'比较近期胜率可能从哪一局开始改变，不推断变化的原因。'},
+  hedge:{name:'Hedge',icon:'share',color:'#8f739a',summary:'按历史误差加权基础模型',formula:'wᵢ ← normalize(wᵢ exp(−η(pᵢ−y)²))',detail:'五个基础专家：固定 50%、Beta 10、Beta 30、Markov、BOCPD。默认 η=2，用已经发生的误差更新权重。'},
+  fixedShare:{name:'Fixed-Share',icon:'share',color:'#b17a3d',summary:'加权预测，保留重新调整的余地',formula:'wᵢ ← (1−γ) normalize(wᵢ exp(−η lossᵢ)) + γ/5',detail:'根据误差分配权重，同时给每个基础模型保留少量权重。'},
 };
+// A forecasting assumption, not an estimate of Blizzard's matchmaker or its MMR.
+export const fairAnchor = (probability:number,strength:number) => .5+(1-strength)*(probability-.5);
 const EXPERTS: ModelId[] = ['fair50','beta10','beta30','markov30','bocpd'];
 const normalize = (logs:number[]) => { const max=Math.max(...logs); const w=logs.map(x=>Math.exp(x-max)); const sum=w.reduce((a,b)=>a+b,0); return w.map(x=>x/sum); };
 export class Engine {
@@ -33,7 +35,8 @@ export class Engine {
   predict(): Probabilities {
     const p=this.parameters, means=this.means();
     const cp=p.hazard*.5+(1-p.hazard)*this.q.reduce((s,q,k)=>s+q*means[k],0);
-    const base=[.5,this.beta(p.shortWindow),this.beta(p.window),this.markov(),cp];
+    // Missing fairness means a legacy v1 forecast. Ensembles mix anchored experts once.
+    const base=[.5,this.beta(p.shortWindow),this.beta(p.window),this.markov(),cp].map(v=>fairAnchor(v,p.fairness??0));
     const hedge=normalize(this.hedgeLogs), fixed=normalize(this.fixedLogs);
     return {fair50:base[0],beta10:base[1],beta30:base[2],markov30:base[3],bocpd:base[4],
       hedge:base.reduce((s,v,i)=>s+v*hedge[i],0),fixedShare:base.reduce((s,v,i)=>s+v*fixed[i],0)};

@@ -7,6 +7,19 @@ let db:IDBDatabase;
 beforeEach(async()=>{await new Promise<void>((resolve,reject)=>{const r=indexedDB.deleteDatabase('ow-next-match');r.onsuccess=()=>resolve();r.onerror=()=>reject(r.error);});db=await openDatabase();});
 afterEach(()=>db.close());
 describe('atomic local database',()=>{
+  it('atomically saves a legacy configuration upgrade and does not repeat it after reopening',async()=>{
+    const data=initialData();data.configurations[0].version='math-v1';delete data.configurations[0].parameters.fairness;data.revision=1;
+    insertRecords(data,data.activeDatasetId,[newMatch(data.activeDatasetId,{outcome:'loss'})]);
+    await saveData(db,data,0);const upgraded=await loadData(db);
+    expect(upgraded.revision).toBe(2);expect(upgraded.records).toEqual(data.records);expect(upgraded.configurations).toHaveLength(2);
+    db.close();db=await openDatabase();expect(await loadData(db)).toEqual(upgraded);
+  });
+  it('concurrent first loads share one saved v2 upgrade',async()=>{
+    const data=initialData();data.configurations[0].version='math-v1';delete data.configurations[0].parameters.fairness;data.revision=1;
+    await saveData(db,data,0);const other=await openDatabase();
+    try{const [first,second]=await Promise.all([loadData(db),loadData(other)]);expect(first).toEqual(second);expect(first.configurations).toHaveLength(2);expect(first.revision).toBe(2);}
+    finally{other.close();}
+  });
   it.each(['tank','damage','support'] as Scope[])('reveals a screenshot import from the %s view and keeps it visible after reopening',async(scope)=>{
     const data=initialData(),id=data.activeDatasetId;
     insertRecords(data,id,[newMatch(id,{outcome:'loss',role:'support'})]);data.scope=scope;data.revision=1;

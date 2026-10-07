@@ -57,7 +57,7 @@ export function ModelSettings({data,configuration,busy,persist,onClose}:{data:Ap
       const changed=JSON.stringify(parameters)!==JSON.stringify(configuration.parameters),id=uid();
       if(await persist(next=>{
         next.selectedModels=selected;
-        if(changed){next.configurations.push({id,version:'math-v1',createdAt:now(),parameters});next.datasets.find(d=>d.id===data.activeDatasetId)!.configurationId=id;}
+        if(changed){next.configurations.push({id,version:'math-v2',createdAt:now(),parameters});next.datasets.find(d=>d.id===data.activeDatasetId)!.configurationId=id;}
       },changed?'已建立新的参数配置；历史锁定概率保留。':'展示模型已更新'))onClose();else setError('保存失败，设置草稿保留。');
     }catch(e){setError((e as Error).message);}
   };
@@ -66,9 +66,10 @@ export function ModelSettings({data,configuration,busy,persist,onClose}:{data:Ap
     {key:'window',label:'长窗口 / Markov 窗口',min:2,max:1000,step:1},{key:'hazard',label:'新段概率 h',min:.00001,max:.99999,step:.00001},
     {key:'eta',label:'专家学习率 η',min:.01,max:100,step:.01},{key:'share',label:'回流比例 γ',min:0,max:1,step:.01},
   ];
-  return <Modal title="三种视角，同一份历史" onClose={onClose}><form onSubmit={e=>void save(e)}>
+  return <Modal title="模型设置" onClose={onClose}><form onSubmit={e=>void save(e)}>
     <p className="subtle-note">只改变首页展示时，其他模型的预测与评分不变。固定 50% 始终参与比较。</p>
     {selected.map((id,i)=><label className="field" key={i}>展示位置 {i+1}<select aria-label={'展示模型 '+(i+1)} value={id} onChange={e=>setSelected(selected.map((old,index)=>index===i?e.target.value as ModelId:old))}>{MODEL_IDS.map(model=><option key={model} value={model} disabled={model!==id&&selected.includes(model)}>{MODELS[model].name}</option>)}</select></label>)}
+    <section className="fairness-setting"><div className="fairness-heading"><h3>向 50% 回归</h3><output htmlFor="fairness-strength">{Math.round((parameters.fairness??0)*100)}%</output></div><p>假设下一局的公平匹配会削弱历史信号。默认减半：历史模型估计 60%，这里显示 55%。这不是游戏官方的参数。</p><label className="field" htmlFor="fairness-strength">回归强度<input id="fairness-strength" type="range" min="0" max="1" step="0.05" value={parameters.fairness??0} onChange={e=>setParameters({...parameters,fairness:Number(e.target.value)})}/></label><div className="range-labels"><span>0% · 保留历史估计</span><span>100% · 完全公平</span></div><p className="microcopy">100% 时，所有模型都预测 50%。这不代表连胜后必输，也不会按你的累计胜率“补回”输赢。修改后重算历史回放，已锁定的赛前概率保留。</p></section>
     <details className="parameter-details"><summary>数学参数 · 修改会新建配置</summary><p className="subtle-note">已锁定的赛前概率不改写。依据同一历史调参后的回放，不是独立样本外评价。Beta 名称中的 10/30 是默认窗口，修改后的参数见此处。</p><div className="field-grid">{fields.map(f=><label className="field" key={f.key}>{f.label}<input type="number" required min={f.min} max={f.max} step={f.step===1?1:'any'} value={parameters[f.key]??''} onChange={e=>setParameters({...parameters,[f.key]:Number(e.target.value)})}/></label>)}</div><label className="field">用于所有模型的历史范围<select value={parameters.historyLimit??'all'} onChange={e=>setParameters({...parameters,historyLimit:e.target.value==='all'?null:Number(e.target.value)})}><option value="all">全部历史（精确递推）</option>{[500,1000,5000].map(n=><option key={n} value={n}>最近 {n} 条（重新冷启动回放）</option>)}</select></label><button className="text-button" type="button" onClick={()=>setParameters({...DEFAULT_PARAMETERS})}>恢复教科书默认参数</button></details>
     <ErrorText text={error}/><button className="primary-button full" disabled={busy} type="submit">保存设置</button></form>
   </Modal>;

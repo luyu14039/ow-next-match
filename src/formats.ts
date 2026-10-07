@@ -1,4 +1,4 @@
-import { DEFAULT_PARAMETERS, MODEL_IDS, ROLES, newMatch, uid, type AppData, type Match, type Parameters, type Role, type Outcome } from './domain';
+import { DEFAULT_PARAMETERS, MODEL_IDS, ROLES, newMatch, uid, upgradeFairness, type AppData, type Match, type Parameters, type Role, type Outcome } from './domain';
 export function parseDuration(text:string):number|null {
   const normalized=text.normalize('NFKC').replace(/\s/g,'');
   if(!normalized) return null;
@@ -80,7 +80,8 @@ export function validateParameters(value:unknown):Parameters {
   if(!p || ![p.prior,p.shortWindow,p.window,p.hazard,p.eta,p.share].every(Number.isFinite))throw new Error('模型参数无效。');
   if(p.prior<.1||p.prior>100||!Number.isInteger(p.window)||p.window<2||p.window>1000||!Number.isInteger(p.shortWindow)||p.shortWindow<1||p.shortWindow>1000||p.hazard<=0||p.hazard>=1||p.eta<=0||p.eta>100||p.share<0||p.share>1)throw new Error('模型参数超出范围。');
   if(p.historyLimit!=null&&(!Number.isInteger(p.historyLimit)||p.historyLimit<2||p.historyLimit>20000))throw new Error('历史窗口无效。');
-  return {...DEFAULT_PARAMETERS,...p,historyLimit:p.historyLimit??null};
+  if(p.fairness!==undefined&&(!Number.isFinite(p.fairness)||p.fairness<0||p.fairness>1))throw new Error('50% 回归强度须在 0% 至 100% 之间。');
+  return {...DEFAULT_PARAMETERS,...p,historyLimit:p.historyLimit??null,fairness:p.fairness??0};
 }
 export interface Backup { format:'ow-next-match'; schemaVersion:1; exportedAt:string; data:AppData; attachments:{id:string;type:string;base64:string}[] }
 export function validateBackup(input:unknown):Backup {
@@ -96,7 +97,7 @@ export function validateBackup(input:unknown):Backup {
   if(!revision(d.revision)||!ROLES.includes(d.scope)||typeof d.reducedMotion!=='boolean'||!Array.isArray(d.selectedModels)||d.selectedModels.length!==3||new Set(d.selectedModels).size!==3||d.selectedModels.some(id=>!MODEL_IDS.includes(id)))throw new Error('备份偏好或修订无效。');
   if(new Set([...datasetIds,...recordIds,...configIds,...batchIds,...imageIds,...d.snapshots.map(s=>s.id)]).size!==d.datasets.length+d.records.length+d.configurations.length+d.batches.length+d.images.length+d.snapshots.length)throw new Error('不同实体之间的 ID 发生冲突。');
   if(!datasetIds.has(d.activeDatasetId))throw new Error('备份的当前数据集不存在。');
-  for(const c of d.configurations){if(c.version!=='math-v1'||!date(c.createdAt))throw new Error('不支持该模型版本或创建时间。');validateParameters(c.parameters);}
+  for(const c of d.configurations){if(!['math-v1','math-v2'].includes(c.version)||!date(c.createdAt))throw new Error('不支持该模型版本或创建时间。');validateParameters(c.parameters);if(c.version==='math-v2'&&c.parameters.fairness===undefined)throw new Error('新版模型配置缺少 50% 回归强度。');}
   for(const ds of d.datasets){
     if(!configIds.has(ds.configurationId)||!textOrNull(ds.name)||!['personal','synthetic','shared-log'].includes(ds.sourceKind)||!['confirmed','assumed-unconfirmed'].includes(ds.chronology)||!['unknown','complete','partial'].includes(ds.completeness)||!revision(ds.revision)||!date(ds.createdAt))throw new Error('数据集信息无效。');
     const rows=d.records.filter(r=>r.datasetId===ds.id);const ordinals=new Set(rows.map(r=>r.ordinal));
@@ -121,7 +122,7 @@ export function restoreCopy(current:AppData,backup:Backup):{data:AppData;blobs:M
   data.batches.push(...from.batches.map(b=>({...b,id:id(b.id),datasetId:id(b.datasetId),recordIds:b.recordIds.map(id),imageIds:b.imageIds.map(id)})));
   data.records.push(...from.records.map(r=>({...r,id:id(r.id),datasetId:id(r.datasetId),sourceBatchId:r.sourceBatchId?id(r.sourceBatchId):null,sourceImageId:r.sourceImageId?id(r.sourceImageId):null})));
   data.snapshots.push(...from.snapshots.map(s=>({...s,id:id(s.id),datasetId:id(s.datasetId),configurationId:id(s.configurationId),targetRecordId:s.targetRecordId?id(s.targetRecordId):null,boundaryRecordId:s.boundaryRecordId&&mapping.has(s.boundaryRecordId)?id(s.boundaryRecordId):null})));
-  data.activeDatasetId=id(from.activeDatasetId);data.scope=from.scope;data.selectedModels=[...from.selectedModels];data.reducedMotion=from.reducedMotion;return {data,blobs};
+  data.activeDatasetId=id(from.activeDatasetId);data.scope=from.scope;data.selectedModels=[...from.selectedModels];data.reducedMotion=from.reducedMotion;return {data:upgradeFairness(data)??data,blobs};
 }
 export function download(text:string,name:string,type='application/json') { const url=URL.createObjectURL(new Blob([text],{type}));const a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000); }
 export function blobBase64(blob:Blob):Promise<string> {return new Promise((resolve,reject)=>{const reader=new FileReader();reader.onload=()=>resolve(String(reader.result).split(',')[1]);reader.onerror=()=>reject(reader.error);reader.readAsDataURL(blob);});}

@@ -1,4 +1,4 @@
-import { initialData, type AppData } from './domain';
+import { initialData, upgradeFairness, type AppData } from './domain';
 const DB_NAME = 'ow-next-match';
 export async function openDatabase(): Promise<IDBDatabase> {
   return new Promise((resolve,reject)=>{
@@ -10,10 +10,17 @@ export async function openDatabase(): Promise<IDBDatabase> {
   });
 }
 export async function loadData(db:IDBDatabase):Promise<AppData> {
-  return new Promise((resolve,reject)=>{
-    const request=db.transaction('state').objectStore('state').get('app');
-    request.onsuccess=()=>resolve(request.result || initialData()); request.onerror=()=>reject(request.error);
-  });
+  for(let attempt=0;attempt<3;attempt++){
+    const data=await new Promise<AppData>((resolve,reject)=>{
+      const request=db.transaction('state').objectStore('state').get('app');
+      request.onsuccess=()=>resolve(request.result || initialData()); request.onerror=()=>reject(request.error);
+    });
+    const upgraded=upgradeFairness(data);
+    if(!upgraded)return data;
+    try{await saveData(db,upgraded,data.revision);return upgraded;}
+    catch(error){if(attempt===2)throw error;}
+  }
+  throw new Error('配置升级失败，请刷新后重试。');
 }
 export async function saveData(db:IDBDatabase,data:AppData, expectedRevision:number, blobs:Map<string,Blob>=new Map()):Promise<void> {
   return new Promise((resolve,reject)=>{

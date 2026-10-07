@@ -1,5 +1,9 @@
 /* Reading sizes for the live product, independent of the compact review prototypes. */
 :root {
+  --font-ui: -apple-system, BlinkMacSystemFont, 'Segoe UI Variable', 'Segoe UI', 'PingFang SC', 'Microsoft YaHei UI', 'Microsoft YaHei', sans-serif;
+  --font-display: 'Iowan Old Style', 'Palatino Linotype', 'Songti SC', STSong, SimSun, serif;
+  --font-number: 'SF Pro Display', Bahnschrift, 'Helvetica Neue', Arial, sans-serif;
+  --font-math: 'SFMono-Regular', Consolas, 'Liberation Mono', 'Microsoft YaHei UI', monospace;
   --type-body: 15px;
   --type-secondary: 14px;
   --type-caption: 13px;
@@ -21,7 +25,17 @@
   }
 }
 
-body { font-size: var(--type-body); }
+body { font-size: var(--type-body); font-family:var(--font-ui); }
+button, input, select, textarea { font-family:var(--font-ui); }
+.masthead h1, .explorer-title h2, .sheet-top h2 {
+  font-family:var(--font-display); font-weight:600; letter-spacing:.01em;
+}
+.masthead h1 { font-weight:700; }
+.explorer-title h2 { font-size:26px; line-height:1.4; }
+.sheet-top h2 { font-size:30px; line-height:1.35; }
+.probability, .explanation-current strong { font-family:var(--font-number); font-variant-numeric:tabular-nums; font-weight:500; letter-spacing:-.045em; }
+.chart-axis, .scores-table td:nth-child(2), .score-difference, .history-table td:first-child,
+.formula, .fairness-heading output, .expert-weights strong { font-family:var(--font-math); font-variant-numeric:tabular-nums; }
 .masthead-description { font-size: var(--type-body); color: var(--text-muted); }
 .masthead-kicker, .eyebrow, .role-subtitle, .caption,
 .scope-pill, .scale-caption, .explorer-context, .small-label,

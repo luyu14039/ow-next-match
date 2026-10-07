@@ -5,6 +5,7 @@ PRIOR = 5.0
 HAZARD = 1/30
 ETA = 2.0
 SHARE = .04
+FAIRNESS = .5
 EXPERTS = ['fair50', 'beta10', 'beta30', 'markov30', 'bocpd']
 
 def beta(history, window):
@@ -53,6 +54,7 @@ class Replay:
 
     def predict(self):
         base = [.5, beta(self.history,10), beta(self.history,30), markov(self.history), self.cp.predict()]
+        base = [FAIRNESS*.5 + (1-FAIRNESS)*p for p in base]
         return dict(zip(EXPERTS,base)) | {
             'hedge': sum(w*p for w,p in zip(self.hedge,base)),
             'fixedShare': sum(w*p for w,p in zip(self.fixed,base)),

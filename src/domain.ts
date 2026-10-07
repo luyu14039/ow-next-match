@@ -3,8 +3,8 @@ export type Scope = Exclude<Role, null> | 'all';
 export type Outcome = 'win' | 'loss' | 'draw' | 'cancelled' | 'unknown';
 export type ModelId = 'fair50' | 'beta10' | 'beta30' | 'markov30' | 'bocpd' | 'hedge' | 'fixedShare';
 export type Probabilities = Record<ModelId, number>;
-export interface Parameters { prior: number; shortWindow: number; window: number; hazard: number; eta: number; share: number; historyLimit: number | null }
-export interface Configuration { id: string; version: 'math-v1'; createdAt: string; parameters: Parameters }
+export interface Parameters { prior: number; shortWindow: number; window: number; hazard: number; eta: number; share: number; historyLimit: number | null; fairness?: number }
+export interface Configuration { id: string; version: 'math-v1' | 'math-v2'; createdAt: string; parameters: Parameters }
 export interface Dataset {
   id: string; name: string; sourceKind: 'personal' | 'synthetic' | 'shared-log';
   chronology: 'confirmed' | 'assumed-unconfirmed'; completeness: 'unknown' | 'complete' | 'partial';
@@ -32,7 +32,7 @@ export interface AppData {
   configurations: Configuration[]; batches: Batch[]; images: SourceImage[]; snapshots: Snapshot[];
   activeDatasetId: string; selectedModels: ModelId[]; scope: Scope; reducedMotion: boolean;
 }
-export const DEFAULT_PARAMETERS: Parameters = { prior: 5, shortWindow: 10, window: 30, hazard: 1 / 30, eta: 2, share: .04, historyLimit:null };
+export const DEFAULT_PARAMETERS: Parameters = { prior: 5, shortWindow: 10, window: 30, hazard: 1 / 30, eta: 2, share: .04, historyLimit:null, fairness:.5 };
 export const MODEL_IDS: ModelId[] = ['fair50','beta10','beta30','markov30','bocpd','hedge','fixedShare'];
 export const DEFAULT_MODELS: ModelId[] = ['markov30','bocpd','fixedShare'];
 export const ROLES: Scope[] = ['all','tank','damage','support'];
@@ -52,10 +52,23 @@ export function newMatch(datasetId: string, values: Partial<Match> = {}): Match 
     sourceImageId:null, rowFromTop:null, partialRow:false, rawFields:'', fieldOrigin:'user-entered', createdAt:now(), ...values };
 }
 export function initialData(): AppData {
-  const configuration: Configuration = { id:uid(), version:'math-v1', createdAt:now(), parameters:{...DEFAULT_PARAMETERS} };
+  const configuration: Configuration = { id:uid(), version:'math-v2', createdAt:now(), parameters:{...DEFAULT_PARAMETERS} };
   const dataset: Dataset = { id:uid(), name:'我的对局', sourceKind:'personal', chronology:'confirmed', completeness:'unknown', createdAt:now(), revision:0, configurationId:configuration.id };
   return { schemaVersion:1, revision:0, datasets:[dataset], records:[], configurations:[configuration],
     batches:[], images:[], snapshots:[], activeDatasetId:dataset.id, selectedModels:[...DEFAULT_MODELS], scope:'all', reducedMotion:false };
+}
+// Preserve v1 configurations and frozen forecasts; only future/replayed forecasts use v2.
+export function upgradeFairness(data:AppData):AppData|null {
+  const old=data.configurations.filter(c=>c.version==='math-v1'&&data.datasets.some(d=>d.configurationId===c.id));
+  if(!old.length)return null;
+  const next=structuredClone(data), replacements=new Map<string,string>();
+  for(const configuration of old){
+    const id=uid();replacements.set(configuration.id,id);
+    next.configurations.push({id,version:'math-v2',createdAt:now(),parameters:{...configuration.parameters,fairness:DEFAULT_PARAMETERS.fairness}});
+  }
+  for(const dataset of next.datasets)dataset.configurationId=replacements.get(dataset.configurationId)??dataset.configurationId;
+  next.revision=data.revision+1;
+  return next;
 }
 export function insertRecords(data: AppData, datasetId: string, records: Match[], beforeId: string | null = null) {
   const list = sortedRecords(data,datasetId);
