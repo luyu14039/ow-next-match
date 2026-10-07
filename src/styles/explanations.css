@@ -51,3 +51,13 @@ html { scrollbar-gutter:stable; }
   .explanation-footer .primary-button { width:100%; }
   .expert-weights>div { grid-template-columns:83px minmax(0,1fr) 63px; gap:8px; }
 }
+
+.elo-state { padding:20px; margin:26px 0; border:1px solid #e0e3f2; background:#f7f8fc; border-radius:18px; }
+.elo-state h3 { font-size:18px; margin:0 0 16px; }
+.elo-state dl { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; margin:0; }
+.elo-state dt { font-size:var(--type-caption); color:var(--text-muted); }
+.elo-state dd { font-family:var(--font-number); font-variant-numeric:tabular-nums; font-size:26px; margin:7px 0 0; color:#4e5994; }
+.elo-state p { margin:18px 0 0; font-size:var(--type-secondary); line-height:1.8; color:var(--text-muted); }
+.explanation-math .formula { white-space:pre-wrap; }
+.explanation-sources { display:flex; flex-wrap:wrap; gap:10px 20px; font-size:var(--type-secondary); line-height:1.8; }
+@media(max-width:480px) { .elo-state { padding:16px; } .elo-state dl { grid-template-columns:1fr; gap:12px; } .elo-state dl div { display:flex; justify-content:space-between; align-items:center; } .elo-state dd { margin:0; font-size:24px; } }

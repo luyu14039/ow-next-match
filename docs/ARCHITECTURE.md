@@ -7,7 +7,8 @@ React + TypeScript + Vite 的纯前端单页应用，无后端服务。
 | src/App.tsx | 工作台、位置范围、分析和历史 |
 | src/ImportDrawer.tsx | 批量导入、人工校对与保存 |
 | src/ocr.ts | 同源 OCR 资源、行检测与 Worker 生命周期 |
-| src/models.ts | 七个数学模型实例及顺序评分 |
+| src/models.ts | 八个数学模型实例及顺序评分 |
+| src/elo.ts | Logistic Elo 评分与独立匹配反馈状态 |
 | src/replay.worker.ts | 长记录回放计算 |
 | src/storage.ts | IndexedDB 的记录、设置及图片存储 |
 | src/synthetic.ts | 可复现的科普模拟 |

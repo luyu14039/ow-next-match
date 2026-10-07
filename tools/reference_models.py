@@ -5,7 +5,7 @@ PRIOR = 5.0
 HAZARD = 1/30
 ETA = 2.0
 SHARE = .04
-FAIRNESS = .5
+FAIRNESS = 0.0
 EXPERTS = ['fair50', 'beta10', 'beta30', 'markov30', 'bocpd']
 
 def beta(history, window):
@@ -45,10 +45,26 @@ class BOCPD:
         self.history.append(y)
         assert abs(sum(self.q)-1) < 1e-12
 
+def elo_expected(player, opponent):
+    return 1 / (1 + 10 ** ((opponent - player) / 400))
+
+class Elo:
+    def __init__(self, k=32, response=1):
+        self.rating = self.opponent = self.ability = 1500.0
+        self.k, self.response = k, response
+
+    def predict(self):
+        return elo_expected(self.ability, self.opponent)
+
+    def update(self, score):
+        self.rating += self.k * (score - elo_expected(self.rating, self.opponent))
+        self.opponent += self.response * (self.rating - self.opponent)
+
 class Replay:
     def __init__(self):
         self.history = []
         self.cp = BOCPD()
+        self.elo = Elo()
         self.hedge = [1/len(EXPERTS)]*len(EXPERTS)
         self.fixed = self.hedge.copy()
 
@@ -58,6 +74,7 @@ class Replay:
         return dict(zip(EXPERTS,base)) | {
             'hedge': sum(w*p for w,p in zip(self.hedge,base)),
             'fixedShare': sum(w*p for w,p in zip(self.fixed,base)),
+            'eloFeedback': self.elo.predict(),
         }
 
     def update(self, y, predictions):
@@ -70,6 +87,7 @@ class Replay:
         self.fixed = update_weights(self.fixed,SHARE)
         self.cp.update(y)
         self.history.append(y)
+        self.elo.update(y)
 
 def replay(labels):
     engine, rows = Replay(), []

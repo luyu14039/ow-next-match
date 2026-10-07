@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
 import symbols from './symbols.svg?raw';
-import { MODELS, type PredictionRow } from './models';
+import { MODELS, hasForecasts, type PredictionRow } from './models';
 import { OUTCOME_NAMES, type ModelId, type Outcome } from './domain';
 import { chartScale } from './chartScale';
 export function Symbols(){return <div aria-hidden="true" dangerouslySetInnerHTML={{__html:symbols}}/>;}
@@ -24,7 +24,7 @@ export function NumberTransition({value,reduced}:{value:number;reduced:boolean})
   },[value,reduced]);
   return <span className="number" aria-hidden="true">{(display*100).toFixed(1)}</span>;
 }
-export function TraceChart({rows,models}:{rows:PredictionRow[];models:ModelId[]}){
+export function TraceChart({rows,models,emptyMessage='记录第一局后，开始回放。'}:{rows:PredictionRow[];models:ModelId[];emptyMessage?:string}){
   const [hover,setHover]=useState<number|null>(null),[fullScale,setFullScale]=useState(false),svg=useRef<SVGSVGElement>(null);
   const [size,setSize]=useState({width:540,height:210});
   useEffect(()=>{
@@ -34,8 +34,8 @@ export function TraceChart({rows,models}:{rows:PredictionRow[];models:ModelId[]}
     });
     observer.observe(svg.current!);return()=>observer.disconnect();
   },[]);
-  const trace=rows.slice(-20),w=size.width,h=size.height,x0=48,y0=16,x1=w-16,y1=h-34;
-  const scale=chartScale(trace.flatMap(row=>models.map(id=>row.predictions[id])),fullScale);
+  const trace=rows.filter(row=>hasForecasts(row,models)).slice(-20),w=size.width,h=size.height,x0=48,y0=16,x1=w-16,y1=h-34;
+  const scale=chartScale(trace.flatMap(row=>models.map(id=>row.predictions[id]!)),fullScale);
   const x=(i:number)=>trace.length===1?(x0+x1)/2:x0+(x1-x0)*i/Math.max(1,trace.length-1),y=(p:number)=>y1-(y1-y0)*(p-scale.min)/(scale.max-scale.min);
   const range=Math.round(scale.min*100)+'–'+Math.round(scale.max*100)+'%';
   const point=hover===null?null:trace[hover];
@@ -44,11 +44,11 @@ export function TraceChart({rows,models}:{rows:PredictionRow[];models:ModelId[]}
     <div className="chart-stage" tabIndex={trace.length?0:-1} role="group" aria-label="回放曲线，方向键逐条检查" onKeyDown={e=>{if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();setHover(i=>Math.min(trace.length-1,Math.max(0,(i??0)+(e.key==='ArrowRight'?1:-1))));}if(e.key==='Escape')setHover(null);}}
       onPointerMove={e=>{if(!trace.length)return;const b=svg.current!.getBoundingClientRect();const index=Math.round(((e.clientX-b.left)/b.width*w-x0)/(x1-x0)*Math.max(1,trace.length-1));setHover(Math.min(trace.length-1,Math.max(0,index)));}} onPointerLeave={()=>setHover(null)}>
       <svg ref={svg} viewBox={'0 0 '+w+' '+h} role="img" aria-label={'最近 '+trace.length+' 条事前回放概率，纵轴 '+range+'，虚线为固定 50%'}>{scale.ticks.map(p=><g key={p}><line x1={x0} x2={x1} y1={y(p)} y2={y(p)} className={p===.5?'chart-baseline':'chart-grid'}/><text x={x0-9} y={y(p)+4} textAnchor="end" className="chart-axis">{Math.round(p*100)}%</text></g>)}{!scale.ticks.includes(.5)&&<line x1={x0} x2={x1} y1={y(.5)} y2={y(.5)} className="chart-baseline"/>}
-        {models.map(id=><g key={id} style={{color:MODELS[id].color}}><path d={trace.map((r,i)=>(i?'L':'M')+x(i)+','+y(r.predictions[id])).join(' ')} className="chart-path"/>{trace.length>0 && <circle cx={x(trace.length-1)} cy={y(trace.at(-1)!.predictions[id])} r="3" fill="currentColor" className="chart-dot"/>}</g>)}
+        {models.map(id=><g key={id} style={{color:MODELS[id].color}}><path d={trace.map((r,i)=>(i?'L':'M')+x(i)+','+y(r.predictions[id]!)).join(' ')} className="chart-path"/>{trace.length>0 && <circle cx={x(trace.length-1)} cy={y(trace.at(-1)!.predictions[id]!)} r="3" fill="currentColor" className="chart-dot"/>}</g>)}
         {[0,Math.floor((trace.length-1)/2),trace.length-1].filter((v,i,a)=>v>=0&&v<trace.length&&a.indexOf(v)===i).map(i=><text key={i} x={x(i)} y={h-9} textAnchor={i===0?'start':i===trace.length-1?'end':'middle'} className="chart-axis">第 {trace[i]?.sequence} 条</text>)}
         {point && <line x1={x(hover!)} x2={x(hover!)} y1={y0} y2={y1} className="chart-baseline"/>}
       </svg>
-      {!trace.length && <div className="chart-empty">记录第一局后，开始回放。</div>}
-      {point && <div className="chart-tooltip" role="status">第 {point.sequence} 条 · {point.y?'胜':'负'}{models.map(id=><span key={id}>{MODELS[id].name} {(point.predictions[id]*100).toFixed(1)}%</span>)}</div>}
+      {!trace.length && <div className="chart-empty">{emptyMessage}</div>}
+      {point && <div className="chart-tooltip" role="status">第 {point.sequence} 条 · {point.y?'胜':'负'}{models.map(id=><span key={id}>{MODELS[id].name} {(point.predictions[id]!*100).toFixed(1)}%</span>)}</div>}
     </div><figcaption>最近 {trace.length} 条的赛前概率 · 方向键可查看各点。缩放只改变刻度，不改变概率。</figcaption></figure>;
 }

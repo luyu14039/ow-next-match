@@ -9,10 +9,10 @@ const json=(path:string)=>JSON.parse(readFileSync(new URL('../'+path,import.meta
 const matches=(labels:number[])=>labels.map((y,i)=>newMatch('test',{id:'r'+i,ordinal:i+1,outcome:y?'win':'loss'}));
 describe('exact mathematics and fair comparison',()=>{
   it('has fair cold start and smooths ten wins',()=>{
-    expect(Object.values(new Engine().predict())).toEqual(Array(7).fill(.5));
+    expect(Object.values(new Engine().predict())).toEqual(Array(MODEL_IDS.length).fill(.5));
     const result=replay(matches(Array(10).fill(1)));
-    expect(result.next.beta30).toBeCloseTo(.625,14);
-    expect(result.next.markov30).toBeCloseTo(.5+(14/19-.5)/2,14);
+    expect(result.next.beta30).toBeCloseTo(.75,14);
+    expect(result.next.markov30).toBeCloseTo(14/19,14);
   });
   it('agrees with every Python prediction for the deterministic 60-row synthetic fixture',()=>{
     const fixture=json('tests/fixtures/synthetic-history.json'),byId=new Map(fixture.records.map((r:any)=>[r.id,r]));
@@ -47,7 +47,7 @@ describe('exact mathematics and fair comparison',()=>{
   });
   it('breaks Markov transitions on gaps and nonbinary events',()=>{
     const rows=matches([1,1,1,1]);rows[2].gapBefore=true;
-    const result=replay(rows);expect(result.rows[2].predictions.markov30).toBe(.5);expect(result.next.markov30).toBeCloseTo(.5+(7/12-.5)/2,12);
+    const result=replay(rows);expect(result.rows[2].predictions.markov30).toBe(.5);expect(result.next.markov30).toBeCloseTo(7/12,12);
     const invalid=newMatch('test',{ordinal:5,outcome:'draw'});
     const after=replay([...rows,invalid]);expect(after.rows.length).toBe(4);expect(after.next.markov30).toBe(.5);
     expect(after.next.bocpd).toEqual(result.next.bocpd);

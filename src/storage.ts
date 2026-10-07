@@ -1,4 +1,4 @@
-import { initialData, upgradeFairness, type AppData } from './domain';
+import { initialData, upgradeConfiguration, type AppData } from './domain';
 const DB_NAME = 'ow-next-match';
 export async function openDatabase(): Promise<IDBDatabase> {
   return new Promise((resolve,reject)=>{
@@ -15,7 +15,7 @@ export async function loadData(db:IDBDatabase):Promise<AppData> {
       const request=db.transaction('state').objectStore('state').get('app');
       request.onsuccess=()=>resolve(request.result || initialData()); request.onerror=()=>reject(request.error);
     });
-    const upgraded=upgradeFairness(data);
+    const upgraded=upgradeConfiguration(data);
     if(!upgraded)return data;
     try{await saveData(db,upgraded,data.revision);return upgraded;}
     catch(error){if(attempt===2)throw error;}

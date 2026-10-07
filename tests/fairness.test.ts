@@ -1,21 +1,21 @@
 import { describe, expect, it } from 'vitest';
-import { DEFAULT_PARAMETERS, MODEL_IDS, initialData, insertRecords, newMatch, upgradeFairness } from '../src/domain';
+import { DEFAULT_PARAMETERS, CLASSIC_MODEL_IDS, initialData, insertRecords, newMatch, upgradeConfiguration } from '../src/domain';
 import { Engine, fairAnchor, replay } from '../src/models';
 import { restoreCopy, validateBackup, validateParameters } from '../src/formats';
 import { chartScale } from '../src/chartScale';
 
-describe('fair-match forecasting assumption',()=>{
+describe('legacy math-v2 forecasting assumption',()=>{
   it('returns exactly 50% for every model and every past forecast under strict fairness',()=>{
     const labels=[...Array(25).fill(1),...Array(30).fill(0),1,0,1,0];
     const rows=labels.map((y,i)=>newMatch('test',{ordinal:i+1,outcome:y?'win':'loss'}));
     const result=replay(rows,{...DEFAULT_PARAMETERS,fairness:1});
-    for(const row of result.rows)expect(Object.values(row.predictions)).toEqual(Array(7).fill(.5));
-    expect(Object.values(result.next)).toEqual(Array(7).fill(.5));
-    for(const id of MODEL_IDS)expect(result.scores[id].brier).toBe(.25);
+    for(const row of result.rows)expect(CLASSIC_MODEL_IDS.map(id=>row.predictions[id])).toEqual(Array(7).fill(.5));
+    expect(CLASSIC_MODEL_IDS.map(id=>result.next[id])).toEqual(Array(7).fill(.5));
+    for(const id of CLASSIC_MODEL_IDS)expect(result.scores[id].brier).toBe(.25);
     expect(result.weights.hedge).toEqual(Array(5).fill(.2));
   });
   it('anchors base experts once, and updates ensemble weights with the reported probabilities',()=>{
-    const raw=new Engine({...DEFAULT_PARAMETERS,fairness:0}),anchored=new Engine();
+    const raw=new Engine({...DEFAULT_PARAMETERS,fairness:0}),anchored=new Engine({...DEFAULT_PARAMETERS,fairness:.5});
     for(const y of [1,1,0,1,0,0,1,1,1]){raw.update(y);anchored.update(y);}
     const a=anchored.predict(),r=raw.predict(),weights=anchored.weights();
     for(const id of ['beta10','beta30','markov30','bocpd'] as const)expect(a[id]).toBeCloseTo(.5+(r[id]-.5)/2,14);
@@ -47,14 +47,14 @@ describe('fair-match forecasting assumption',()=>{
     const data=initialData(),configuration=data.configurations[0];configuration.version='math-v1';delete configuration.parameters.fairness;
     insertRecords(data,data.activeDatasetId,[newMatch(data.activeDatasetId,{outcome:'win'})]);
     data.snapshots.push({id:'frozen',datasetId:data.activeDatasetId,scope:'all',configurationId:configuration.id,createdAt:configuration.createdAt,historyRevision:1,boundaryRecordId:null,probabilities:new Engine(configuration.parameters).predict(),status:'pending',targetRecordId:null});
-    const before=structuredClone(data),upgraded=upgradeFairness(data)!;
+    const before=structuredClone(data),upgraded=upgradeConfiguration(data)!;
     expect(data).toEqual(before);expect(upgraded.records).toEqual(before.records);expect(upgraded.snapshots).toEqual(before.snapshots);
     expect(upgraded.configurations[0]).toEqual(configuration);expect(upgraded.datasets[0].configurationId).toBe(upgraded.configurations[1].id);
-    expect(upgraded.configurations[1].parameters.fairness).toBe(.5);expect(upgraded.revision).toBe(data.revision+1);
-    expect(upgradeFairness(upgraded)).toBeNull();
+    expect(upgraded.configurations[1].parameters.fairness).toBe(0);expect(upgraded.revision).toBe(data.revision+1);
+    expect(upgradeConfiguration(upgraded)).toBeNull();
     const backup=validateBackup({format:'ow-next-match',schemaVersion:1,data,attachments:[]});
     const restored=restoreCopy(initialData(),backup).data;
-    expect(restored.configurations.find(c=>c.id===restored.datasets.at(-1)!.configurationId)!.version).toBe('math-v2');
+    expect(restored.configurations.find(c=>c.id===restored.datasets.at(-1)!.configurationId)!.version).toBe('math-v3');
     expect(restored.snapshots[0].probabilities).toEqual(before.snapshots[0].probabilities);
     expect(restored.configurations.find(c=>c.id===restored.snapshots[0].configurationId)!.version).toBe('math-v1');
   });
